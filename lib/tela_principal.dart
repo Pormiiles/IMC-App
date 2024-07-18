@@ -6,6 +6,11 @@ import 'package:imccalc_flutter/genero_card.dart';
 const corAtivaBotao = Color(0xFF9E9E9E);
 const corInativaBotao = Color(0xFF7E7E7E);
 
+enum GeneroEnum {
+  Masculino,
+  Feminino
+}
+
 class TelaPrincipal extends StatefulWidget {
   @override
   _TelaPrincipalState createState() => _TelaPrincipalState();
@@ -15,8 +20,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Color corCartaoMasculino = corInativaBotao;
   Color corCartaoFeminino = corInativaBotao;
 
-  void atualizarCor(int generoUser) {
-    if(generoUser == 1) {
+  void atualizarCor(GeneroEnum generoUser) {
+    if(generoUser == GeneroEnum.Masculino) {
       if(corCartaoMasculino == corInativaBotao) {
         corCartaoMasculino = corAtivaBotao;
         corCartaoFeminino = corInativaBotao;
@@ -25,7 +30,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
       }
     } 
     
-    if(generoUser == 2) {
+    if(generoUser == GeneroEnum.Feminino) {
       if(corCartaoFeminino == corInativaBotao) {
         corCartaoFeminino = corAtivaBotao;
         corCartaoMasculino = corInativaBotao;
@@ -50,7 +55,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        atualizarCor(1);
+                        atualizarCor(GeneroEnum.Masculino);
                       });
                     },
                     child: CartaoPadrao(
@@ -63,7 +68,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        atualizarCor(2);
+                        atualizarCor(GeneroEnum.Feminino);
                       });
                     },
                     child: CartaoPadrao(
