@@ -21,23 +21,9 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Color corCartaoFeminino = corInativaBotao;
 
   void atualizarCor(GeneroEnum generoUser) {
-    if(generoUser == GeneroEnum.Masculino) {
-      if(corCartaoMasculino == corInativaBotao) {
-        corCartaoMasculino = corAtivaBotao;
-        corCartaoFeminino = corInativaBotao;
-      } else {
-        corCartaoMasculino = corInativaBotao;
-      }
-    } 
-    
-    if(generoUser == GeneroEnum.Feminino) {
-      if(corCartaoFeminino == corInativaBotao) {
-        corCartaoFeminino = corAtivaBotao;
-        corCartaoMasculino = corInativaBotao;
-      } else {
-        corCartaoFeminino = corInativaBotao;
-      }
-    }
+    corCartaoMasculino = generoUser == GeneroEnum.Masculino ? (corCartaoMasculino == corInativaBotao ? corAtivaBotao : corInativaBotao) : corInativaBotao; 
+
+    corCartaoFeminino = generoUser == GeneroEnum.Feminino ? (corCartaoFeminino == corInativaBotao ? corAtivaBotao : corInativaBotao) : corInativaBotao;
   }
 
   @override
