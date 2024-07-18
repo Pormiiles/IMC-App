@@ -3,12 +3,38 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:imccalc_flutter/cartao_padrao.dart';
 import 'package:imccalc_flutter/genero_card.dart';
 
+const corAtivaBotao = Color(0xFF9E9E9E);
+const corInativaBotao = Color(0xFF7E7E7E);
+
 class TelaPrincipal extends StatefulWidget {
   @override
   _TelaPrincipalState createState() => _TelaPrincipalState();
 }
 
 class _TelaPrincipalState extends State<TelaPrincipal> {
+  Color corCartaoMasculino = corInativaBotao;
+  Color corCartaoFeminino = corInativaBotao;
+
+  void atualizarCor(int generoUser) {
+    if(generoUser == 1) {
+      if(corCartaoMasculino == corInativaBotao) {
+        corCartaoMasculino = corAtivaBotao;
+        corCartaoFeminino = corInativaBotao;
+      } else {
+        corCartaoMasculino = corInativaBotao;
+      }
+    } 
+    
+    if(generoUser == 2) {
+      if(corCartaoFeminino == corInativaBotao) {
+        corCartaoFeminino = corAtivaBotao;
+        corCartaoMasculino = corInativaBotao;
+      } else {
+        corCartaoFeminino = corInativaBotao;
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +47,29 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             child: Row(
               children: [
                 Expanded(
-                  child: CartaoPadrao(
-                    Color(0xFF9E9E9E),
-                    filhoCartao: GeneroCard(FontAwesomeIcons.mars, 'MASCULINO'),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        atualizarCor(1);
+                      });
+                    },
+                    child: CartaoPadrao(
+                      corCartaoMasculino,
+                      filhoCartao: GeneroCard(FontAwesomeIcons.mars, 'MASCULINO'),
+                    ),
                   ),
                 ),
                 Expanded(
-                  child: CartaoPadrao(
-                    Color(0xFF9E9E9E),
-                    filhoCartao: GeneroCard(FontAwesomeIcons.venus, 'FEMININO'),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        atualizarCor(2);
+                      });
+                    },
+                    child: CartaoPadrao(
+                      corCartaoFeminino,
+                      filhoCartao: GeneroCard(FontAwesomeIcons.venus, 'FEMININO'),
+                    ),
                   ),
                 ),
               ],
@@ -40,7 +80,7 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               children: [
                 Expanded(
                   child: CartaoPadrao(
-                    Color(0xFF9E9E9E),
+                    corAtivaBotao,
                   ),
                 ),
               ],
@@ -51,12 +91,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               children: [
                 Expanded(
                   child: CartaoPadrao(
-                    Color(0xFF9E9E9E),
+                    corAtivaBotao,
                   ),
                 ),
                 Expanded(
                   child: CartaoPadrao(
-                    Color(0xFF9E9E9E),
+                    corAtivaBotao,
                   ),
                 ),
               ],
