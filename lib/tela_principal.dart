@@ -21,40 +21,13 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 Expanded(
                   child: CartaoPadrao(
                     Color(0xFF9E9E9E),
-                    filhoCartao: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.mars,
-                          size: 95.0,
-                        ),
-                        SizedBox(height: 15.0),
-                        Text(
-                          'MASCULINO',
-                          style: TextStyle(color: Colors.black,
-                          fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                      ],
-                    ),
+                    filhoCartao: GeneroCard(FontAwesomeIcons.mars, 'MASCULINO'),
                   ),
                 ),
                 Expanded(
                   child: CartaoPadrao(
                     Color(0xFF9E9E9E),
-                    filhoCartao: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.venus,
-                          size: 95.0,
-                        ),
-                        SizedBox(height: 15.0),
-                        Text(
-                          'FEMININO',
-                          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0),
-                        ),
-                      ],
-                    ),
+                    filhoCartao: GeneroCard(FontAwesomeIcons.venus, 'FEMININO'),
                   ),
                 ),
               ],
@@ -92,6 +65,32 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
     );
   }
 }
+
+class GeneroCard extends StatelessWidget {
+  GeneroCard(this.icon, this.generoUser);
+
+  final IconData icon;
+  final String generoUser;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          icon,
+          size: 95.0,
+        ),
+        SizedBox(height: 15.0),
+        Text(
+          generoUser,
+          style: TextStyle(color: Colors.black,
+          fontWeight: FontWeight.bold, fontSize: 20.0),
+        ),
+      ],
+    );
+  }
+} 
 
 class CartaoPadrao extends StatelessWidget {
   CartaoPadrao(this.cor, {this.filhoCartao});
