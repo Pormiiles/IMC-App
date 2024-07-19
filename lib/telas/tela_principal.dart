@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:imccalc_flutter/calculadora.dart';
 import 'package:imccalc_flutter/componentes/cartao_padrao.dart';
 import 'package:imccalc_flutter/componentes/genero_card.dart';
 import 'package:imccalc_flutter/telas/tela_resultados.dart';
@@ -203,7 +204,12 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           ),
           BotaoInferior(tituloBotao: "CALCULAR",
             aoPressionar: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Resultados(),),);
+              Calculadora calculadora = Calculadora(altura: altura, peso: peso);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => Resultados( 
+                resultadoIMC: calculadora.calcularIMC(), 
+                resultadoTexto: calculadora.obterResultado(),
+                resultadoDetalhes: calculadora.obterDetalhes(),
+              ),),);
             },
           ),
         ],

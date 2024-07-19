@@ -3,7 +3,11 @@ import 'package:imccalc_flutter/componentes/botao_inferior.dart';
 import 'package:imccalc_flutter/componentes/cartao_padrao.dart';
 
 class Resultados extends StatelessWidget {
-  const Resultados({Key? key}) : super(key: key);
+  Resultados({required this.resultadoIMC, required this.resultadoTexto, required this.resultadoDetalhes});
+
+  final String resultadoIMC;
+  final String resultadoTexto;
+  final String resultadoDetalhes;
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +21,8 @@ class Resultados extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
+              padding: EdgeInsets.all(20.0),
+              alignment: Alignment.bottomLeft,
               child: Text("Resultado",
               style: TextStyle(
                 color: Colors.white,
@@ -32,19 +38,19 @@ class Resultados extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text("NORMAL", 
+                  Text(resultadoTexto.toUpperCase(), 
                   style: TextStyle(
                     color: Color(0xFF24D876),
                     fontWeight: FontWeight.bold, 
                     fontSize: 22.0),
                   ),
-                  Text("18.4", 
+                  Text(resultadoIMC, 
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold, 
                     fontSize: 100.0),
                   ),
-                  Text("O seu IMC está baixo! Você precisa comer mais.", 
+                  Text(resultadoDetalhes, 
                   style: TextStyle(
                     color: Colors.black, 
                     fontSize: 22.0),
