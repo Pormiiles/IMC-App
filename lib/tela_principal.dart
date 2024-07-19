@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:imccalc_flutter/cartao_padrao.dart';
 import 'package:imccalc_flutter/genero_card.dart';
+import 'package:imccalc_flutter/tela_resultados.dart';
 
 const corAtivaBotao = Color(0xFF9E9E9E);
 const corInativaBotao = Color(0xFF7E7E7E);
@@ -198,7 +199,40 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               ],
             ),
           ),
+          BotaoInferior(tituloBotao: "CALCULAR",
+            aoPressionar: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Resultados(),),);
+            },
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class BotaoInferior extends StatelessWidget {
+
+  BotaoInferior({required this.aoPressionar, required this.tituloBotao});
+
+  final VoidCallback aoPressionar;
+  final String tituloBotao;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: aoPressionar,
+      child: Container(
+        child: Center(
+          child: Text(tituloBotao,
+          style: TextStyle(color: Colors.white,
+          fontWeight: FontWeight.bold, 
+          fontSize: 20.0),
+          ),
+        ),
+        color: Colors.deepOrange[800],
+        margin: EdgeInsets.only(top: 10.0),
+        width: double.infinity,
+        height: 80.0,
       ),
     );
   }
