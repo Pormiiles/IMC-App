@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:imccalc_flutter/cartao_padrao.dart';
-import 'package:imccalc_flutter/genero_card.dart';
-import 'package:imccalc_flutter/tela_resultados.dart';
+import 'package:imccalc_flutter/componentes/cartao_padrao.dart';
+import 'package:imccalc_flutter/componentes/genero_card.dart';
+import 'package:imccalc_flutter/telas/tela_resultados.dart';
+import '../componentes/botao_arredondado.dart';
+import '../componentes/botao_inferior.dart';
 
 const corAtivaBotao = Color(0xFF9E9E9E);
 const corInativaBotao = Color(0xFF7E7E7E);
@@ -206,56 +208,6 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class BotaoInferior extends StatelessWidget {
-
-  BotaoInferior({required this.aoPressionar, required this.tituloBotao});
-
-  final VoidCallback aoPressionar;
-  final String tituloBotao;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: aoPressionar,
-      child: Container(
-        child: Center(
-          child: Text(tituloBotao,
-          style: TextStyle(color: Colors.white,
-          fontWeight: FontWeight.bold, 
-          fontSize: 20.0),
-          ),
-        ),
-        color: Colors.deepOrange[800],
-        margin: EdgeInsets.only(top: 10.0),
-        width: double.infinity,
-        height: 80.0,
-      ),
-    );
-  }
-}
-
-class BotaoArredondado extends StatelessWidget {
-  const BotaoArredondado({required this.icon, required this.aoPressionar});
-
-  final IconData icon;
-  final VoidCallback aoPressionar;
-
-  @override
-  Widget build(BuildContext context) {
-    return RawMaterialButton(
-      child: Icon(icon),
-      onPressed: aoPressionar,
-      elevation: 6.0,
-      constraints: BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
-      ),
-      shape: CircleBorder(),
-      fillColor: Color(0xFF7E7E7E),
     );
   }
 }

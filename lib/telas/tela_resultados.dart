@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:imccalc_flutter/cartao_padrao.dart';
-import 'package:imccalc_flutter/tela_principal.dart';
+import 'package:imccalc_flutter/componentes/botao_inferior.dart';
+import 'package:imccalc_flutter/componentes/cartao_padrao.dart';
 
 class Resultados extends StatelessWidget {
   const Resultados({Key? key}) : super(key: key);
