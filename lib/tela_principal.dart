@@ -20,6 +20,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
   Color corCartaoMasculino = corInativaBotao;
   Color corCartaoFeminino = corInativaBotao;
   int altura = 180;
+  int peso = 60;
+  int idade = 20;
 
   void atualizarCor(GeneroEnum generoUser) {
     corCartaoMasculino = generoUser == GeneroEnum.Masculino ? (corCartaoMasculino == corInativaBotao ? corAtivaBotao : corInativaBotao) : corInativaBotao; 
@@ -116,11 +118,81 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 Expanded(
                   child: CartaoPadrao(
                     corAtivaBotao,
+                    filhoCartao: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("PESO", 
+                          style: TextStyle(color: Colors.black,
+                          fontWeight: FontWeight.bold, fontSize: 20.0)
+                        ),
+                        Text(peso.toString(), 
+                          style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold, fontSize: 40.0)
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [ 
+                            BotaoArredondado(
+                              aoPressionar: () {
+                                setState(() {
+                                  peso--;
+                                });
+                              },
+                              icon: FontAwesomeIcons.minus,
+                            ),
+                            SizedBox(width: 10.0),
+                            BotaoArredondado(
+                              icon: FontAwesomeIcons.plus,
+                              aoPressionar: () {
+                                setState(() {
+                                  peso++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: CartaoPadrao(
                     corAtivaBotao,
+                    filhoCartao: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("IDADE", 
+                          style: TextStyle(color: Colors.black,
+                          fontWeight: FontWeight.bold, fontSize: 20.0)
+                        ),
+                        Text(idade.toString(),
+                          style: TextStyle(color: Colors.white,
+                          fontWeight: FontWeight.bold, fontSize: 40.0)
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [ 
+                            BotaoArredondado(
+                              aoPressionar: () {
+                                setState(() {
+                                  idade--;
+                                });
+                              },
+                              icon: FontAwesomeIcons.minus,
+                            ),
+                            SizedBox(width: 10.0),
+                            BotaoArredondado(
+                              icon: FontAwesomeIcons.plus,
+                              aoPressionar: () {
+                                setState(() {
+                                  idade++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -128,6 +200,28 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class BotaoArredondado extends StatelessWidget {
+  const BotaoArredondado({required this.icon, required this.aoPressionar});
+
+  final IconData icon;
+  final VoidCallback aoPressionar;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(icon),
+      onPressed: aoPressionar,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF7E7E7E),
     );
   }
 }
