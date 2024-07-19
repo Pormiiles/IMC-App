@@ -38,29 +38,25 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
             child: Row(
               children: [
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: CartaoPadrao(
+                    corCartaoMasculino,
+                    filhoCartao: GeneroCard(FontAwesomeIcons.mars, 'MASCULINO'),
+                    aoPressionar: () {
                       setState(() {
                         atualizarCor(GeneroEnum.Masculino);
                       });
-                    },
-                    child: CartaoPadrao(
-                      corCartaoMasculino,
-                      filhoCartao: GeneroCard(FontAwesomeIcons.mars, 'MASCULINO'),
-                    ),
+                    }
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: CartaoPadrao(
+                    corCartaoFeminino,
+                    filhoCartao: GeneroCard(FontAwesomeIcons.venus, 'FEMININO'),
+                    aoPressionar: () {
                       setState(() {
                         atualizarCor(GeneroEnum.Feminino);
                       });
-                    },
-                    child: CartaoPadrao(
-                      corCartaoFeminino,
-                      filhoCartao: GeneroCard(FontAwesomeIcons.venus, 'FEMININO'),
-                    ),
+                    }
                   ),
                 ),
               ],
