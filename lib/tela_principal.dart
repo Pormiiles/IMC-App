@@ -19,6 +19,7 @@ class TelaPrincipal extends StatefulWidget {
 class _TelaPrincipalState extends State<TelaPrincipal> {
   Color corCartaoMasculino = corInativaBotao;
   Color corCartaoFeminino = corInativaBotao;
+  int altura = 180;
 
   void atualizarCor(GeneroEnum generoUser) {
     corCartaoMasculino = generoUser == GeneroEnum.Masculino ? (corCartaoMasculino == corInativaBotao ? corAtivaBotao : corInativaBotao) : corInativaBotao; 
@@ -68,6 +69,42 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                 Expanded(
                   child: CartaoPadrao(
                     corAtivaBotao,
+                    filhoCartao: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("ALTURA", 
+                          style: TextStyle(color: Colors.black,
+                          fontWeight: FontWeight.bold, fontSize: 20.0),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.baseline,
+                          textBaseline: TextBaseline.alphabetic,
+                          children: [
+                            Text(altura.toString(), 
+                              style: TextStyle(color: Colors.white,
+                              fontWeight: FontWeight.bold, fontSize: 40.0),
+                            ),
+                            Text("cm", 
+                              style: TextStyle(color: Colors.black,
+                              fontWeight: FontWeight.bold, fontSize: 20.0),
+                            ),
+                          ],
+                        ),
+                        Slider(
+                          activeColor: Color(0xFFFF5822),
+                          inactiveColor: Color(0xFF8D8E98),
+                          value: altura.toDouble(),
+                          min: 120.0,
+                          max: 220.0,
+                          onChanged: (double novoValor) {
+                            setState(() {
+                              altura = novoValor.round();
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
