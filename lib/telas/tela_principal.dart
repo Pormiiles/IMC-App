@@ -139,7 +139,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                             BotaoArredondado(
                               aoPressionar: () {
                                 setState(() {
-                                  peso--;
+                                  if(peso > 0)
+                                    peso--;
                                 });
                               },
                               icon: FontAwesomeIcons.minus,
@@ -179,7 +180,8 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                             BotaoArredondado(
                               aoPressionar: () {
                                 setState(() {
-                                  idade--;
+                                  if(idade > 0)
+                                    idade--;
                                 });
                               },
                               icon: FontAwesomeIcons.minus,
